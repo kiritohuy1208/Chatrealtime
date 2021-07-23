@@ -3,6 +3,7 @@ const app = express()
 const socketio = require('socket.io')
 const http = require('http')
 const dotenv = require('dotenv')
+const cors = require('cors')
 dotenv.config()
 
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./users')
@@ -53,7 +54,7 @@ io.on('connection',(socket)=>{
 })
 
 app.use(router)
-
+app.use(cors)
 
 
 const PORT = process.env.Port || 5000
